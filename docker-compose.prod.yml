@@ -1,6 +1,8 @@
 # Production: docker compose -f docker-compose.prod.yml up -d --build
-# The app is published on the host's loopback only (127.0.0.1:8612); the reverse proxy serves
-# https://launchscout.dinesh-genai.tech -> 127.0.0.1:8612 (see deploy/nginx/launchscout.conf).
+# The app is published on the host's loopback only (127.0.0.1:8612, for health checks). Public HTTPS
+# comes from the Traefik container on the VPS, which discovers this container through the labels
+# below (Let's Encrypt certificate via its "letsencrypt" resolver). For a host-level nginx instead,
+# see deploy/nginx/launchscout.conf.
 services:
   launchscout:
     build: .
@@ -14,6 +16,13 @@ services:
       CREWAI_TRACING_ENABLED: "false"
     ports:
       - "127.0.0.1:8612:8501"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.launchscout.rule=Host(`launchscout.dinesh-genai.tech`)
+      - traefik.http.routers.launchscout.entrypoints=websecure
+      - traefik.http.routers.launchscout.tls.certresolver=letsencrypt
+      - traefik.http.routers.launchscout.service=launchscout
+      - traefik.http.services.launchscout.loadbalancer.server.port=8501
     volumes:
       - outputs:/app/outputs   # past reports
       - cache:/app/.cache      # search and page cache
