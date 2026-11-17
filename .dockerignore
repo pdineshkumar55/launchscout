@@ -1,0 +1,28 @@
+# Secrets and private values never go into the image (the server's .env is read at runtime).
+.env
+.env.*
+!.env.example
+evals/private.yaml
+
+# Local runtime data
+outputs/
+.cache/
+logs/
+data/
+
+# Development only
+.venv/
+venv/
+.git/
+.github/
+.claude/
+tests/
+evals/results.json
+docs/screenshots/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.vscode/
+.idea/
+.pre-commit-config.yaml

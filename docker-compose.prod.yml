@@ -1,0 +1,37 @@
+# Production: docker compose -f docker-compose.prod.yml up -d --build
+# The app is published on the host's loopback only (127.0.0.1:8612); the reverse proxy serves
+# https://launchscout.dinesh-genai.tech -> 127.0.0.1:8612 (see deploy/nginx/launchscout.conf).
+services:
+  launchscout:
+    build: .
+    image: launchscout:latest
+    container_name: launchscout
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      CREWAI_DISABLE_TELEMETRY: "true"
+      OTEL_SDK_DISABLED: "true"
+      CREWAI_TRACING_ENABLED: "false"
+    ports:
+      - "127.0.0.1:8612:8501"
+    volumes:
+      - outputs:/app/outputs   # past reports
+      - cache:/app/.cache      # search and page cache
+      - logs:/app/logs         # runs.jsonl
+      - data:/app/data         # daily run counter
+    mem_limit: 1536m
+    cpus: 1.0
+    pids_limit: 256
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  outputs:
+  cache:
+  logs:
+  data:
