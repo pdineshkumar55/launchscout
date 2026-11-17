@@ -10,10 +10,18 @@ permissions:
 jobs:
   gitleaks:
     runs-on: ubuntu-latest
+    env:
+      GITLEAKS_VERSION: "8.24.3"
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # scan the full history, not just the latest commit
-      - uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0  # the full history is scanned, not just the latest commit
+
+      - name: Install gitleaks
+        run: |
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | tar -xz -C /usr/local/bin gitleaks
+          gitleaks version
+
+      - name: Scan every commit for secrets
+        run: gitleaks git --redact --verbose --exit-code 1 .
