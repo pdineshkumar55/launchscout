@@ -136,3 +136,15 @@ def test_own_business_noted_in_header(market, feedback, strategy):
     md, _ = build(inp, market, feedback, strategy, "")
     assert "_Your business: Sri Example Silks (left out of the competitor list)_" in md
     assert check_structure(md)["sections_ok"]
+
+
+def test_writer_backup_path_is_relative(tmp_path, monkeypatch):
+    # CrewAI strips a leading "/" from output_file; an absolute path broke runs in the container.
+    from pathlib import Path
+
+    from launchscout.tasks import backup_output_path
+    monkeypatch.chdir(tmp_path)
+    inside = backup_output_path(tmp_path / "outputs" / "run1" / "report_writer.md")
+    assert inside == "outputs/run1/report_writer.md" and not Path(inside).is_absolute()
+    outside = backup_output_path(tmp_path.parent / "elsewhere" / "report_writer.md")
+    assert outside is None

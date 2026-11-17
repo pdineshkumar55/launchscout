@@ -32,7 +32,7 @@ WORKDIR /app
 COPY --chown=app:app . .
 # Writable folders for reports, search cache, run logs and the usage counter. Created here so named
 # volumes mounted on them inherit the app user's ownership.
-RUN mkdir -p outputs .cache logs data && chown -R app:app outputs .cache logs data
+RUN mkdir -p outputs .cache logs data && chown app:app /app && chown -R app:app outputs .cache logs data
 
 USER app
 EXPOSE 8501

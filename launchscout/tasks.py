@@ -162,6 +162,20 @@ Using only the market scan and customer feedback from the previous steps:
     )
 
 
+def backup_output_path(path: Path) -> str | None:
+    """Path for the writer task's backup file, relative to the working directory.
+
+    CrewAI strips a leading "/" from output_file (so "/app/outputs/x" became "app/outputs/x" and
+    failed in the container) and rejects "..". The writer's text is captured from the task output
+    anyway, so when no clean relative path exists the backup file is simply skipped.
+    """
+    try:
+        rel = Path(path).resolve().relative_to(Path.cwd().resolve())
+    except ValueError:
+        return None
+    return rel.as_posix()
+
+
 def report_skeleton(inp: ResearchInputs, today: str) -> str:
     return f"""# Competitor Report: {inp.idea_title}, {inp.city}
 _Prepared {today} · Target customer: {inp.target}_
@@ -229,6 +243,6 @@ Skeleton:
         ),
         agent=agent,
         context=[market, feedback, strategy],
-        output_file=str(run_dir / "report_writer.md"),
+        output_file=backup_output_path(run_dir / "report_writer.md"),
         create_directory=True,
     )
