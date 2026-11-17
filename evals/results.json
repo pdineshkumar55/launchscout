@@ -1,0 +1,197 @@
+[
+  {
+    "name": "millet-coimbatore",
+    "inputs": {
+      "idea": "Healthy millet meal boxes",
+      "city": "Coimbatore",
+      "target": "Office workers and health-conscious families",
+      "known_competitors": "",
+      "country": "India",
+      "currency": "Rs",
+      "own_business": ""
+    },
+    "run_dir": "outputs/healthy-millet-meal-boxes-coimbatore_20261117_221418",
+    "duration_s": 72.0,
+    "cost_usd": 0.00681,
+    "model_calls": 10,
+    "searches": 10,
+    "page_reads": 5,
+    "sections_ok": true,
+    "citations_ok": true,
+    "competitors": 3,
+    "enough_competitors": true,
+    "structure_pass": true,
+    "sources_total": 4,
+    "sources_reachable": 4,
+    "reachable_pct": 100.0,
+    "sources_broken": 0,
+    "prices_total": 1,
+    "prices_verified": 1,
+    "prices_verified_pct": 100.0,
+    "judge": {
+      "model": "gpt-4o-mini",
+      "scores": {
+        "specificity": {
+          "score": 3,
+          "quote": "Mummy's Cloud Kitchen | From Rs 180 per meal | Own website",
+          "reason": "Some specific pricing is provided, but many competitors lack listed prices.",
+          "quote_found": true
+        },
+        "grounding": {
+          "score": 4,
+          "quote": "Food is light, refreshing, and guilt-free, suitable for cravings or mid-day snacks (Zero Cals) [4]",
+          "reason": "Most claims are supported by citations, but some competitor details are vague.",
+          "quote_found": true
+        },
+        "actionability": {
+          "score": 4,
+          "quote": "\"Healthy millet meal boxes delivered fresh, Rs 150 per meal.\"",
+          "reason": "The positioning and pricing are clear, but more competitor details would enhance strategy.",
+          "quote_found": true
+        },
+        "plan_realism": {
+          "score": 5,
+          "quote": "- Week 1: Create a simple website and social media profiles to establish an online presence.",
+          "reason": "The plan is concrete, budget-friendly, and builds logically week by week.",
+          "quote_found": true
+        }
+      },
+      "average": 4.0,
+      "summary": "The report provides a solid foundation but lacks some competitor pricing details for improved specificity.",
+      "all_quotes_found": true,
+      "prompt_tokens": 906,
+      "completion_tokens": 261
+    },
+    "judge_cost_usd": 0.00029
+  },
+  {
+    "name": "pet-grooming-chennai",
+    "inputs": {
+      "idea": "Pet grooming at home",
+      "city": "Chennai",
+      "target": "Busy pet owners in apartments",
+      "known_competitors": "",
+      "country": "India",
+      "currency": "Rs",
+      "own_business": ""
+    },
+    "run_dir": "outputs/pet-grooming-at-home-chennai_20261117_221548",
+    "duration_s": 63.6,
+    "cost_usd": 0.00725,
+    "model_calls": 10,
+    "searches": 11,
+    "page_reads": 5,
+    "sections_ok": true,
+    "citations_ok": true,
+    "competitors": 4,
+    "enough_competitors": true,
+    "structure_pass": true,
+    "sources_total": 6,
+    "sources_reachable": 6,
+    "reachable_pct": 100.0,
+    "sources_broken": 0,
+    "prices_total": 2,
+    "prices_verified": 2,
+    "prices_verified_pct": 100.0,
+    "judge": {
+      "model": "gpt-4o-mini",
+      "scores": {
+        "specificity": {
+          "score": 4,
+          "quote": "ThePetNest | Rs 999+ per session | Own website, Mobile app | Offers a range of grooming packages tailored to pet needs.",
+          "reason": "Specific competitors and their pricing are mentioned, but some prices are not listed.",
+          "quote_found": true
+        },
+        "grounding": {
+          "score": 3,
+          "quote": "No complaints were found in the public reviews collected for these competitors.",
+          "reason": "The report lacks citations for customer complaints, limiting its grounding.",
+          "quote_found": true
+        },
+        "actionability": {
+          "score": 5,
+          "quote": "\"At-home pet grooming with clear pricing starting at Rs 899 per session.\"",
+          "reason": "The market gap and pricing strategy are clearly defined and actionable.",
+          "quote_found": true
+        },
+        "plan_realism": {
+          "score": 4,
+          "quote": "Week 1: Create a simple website and social media profiles to establish an online presence.",
+          "reason": "The plan is concrete and feasible, but could include more detail on budget.",
+          "quote_found": true
+        }
+      },
+      "average": 4.0,
+      "summary": "The report is strong in specificity and actionability, but grounding needs improvement for better credibility.",
+      "all_quotes_found": true,
+      "prompt_tokens": 1033,
+      "completion_tokens": 262
+    },
+    "judge_cost_usd": 0.00031
+  },
+  {
+    "name": "silk-saree-udumalpet",
+    "inputs": {
+      "idea": "Silk saree shop",
+      "city": "Udumalpet",
+      "target": "Women buying silk sarees for weddings and festivals",
+      "known_competitors": "",
+      "country": "India",
+      "currency": "Rs",
+      "own_business": ""
+    },
+    "run_dir": "outputs/silk-saree-shop-udumalpet_20261117_222152",
+    "duration_s": 59.0,
+    "cost_usd": 0.00556,
+    "model_calls": 8,
+    "searches": 7,
+    "page_reads": 3,
+    "sections_ok": true,
+    "citations_ok": true,
+    "competitors": 3,
+    "enough_competitors": true,
+    "structure_pass": true,
+    "sources_total": 6,
+    "sources_reachable": 6,
+    "reachable_pct": 100.0,
+    "sources_broken": 0,
+    "prices_total": 1,
+    "prices_verified": 1,
+    "prices_verified_pct": 100.0,
+    "judge": {
+      "model": "gpt-4o-mini",
+      "scores": {
+        "specificity": {
+          "score": 5,
+          "quote": "ST Silks | Rs 4,200 per soft silk saree | WhatsApp, Own website",
+          "reason": "The report provides specific competitor names, prices, and channels.",
+          "quote_found": true
+        },
+        "grounding": {
+          "score": 5,
+          "quote": "Poor finishing on saree stitching (Shubhankari Silks) [4]",
+          "reason": "All claims are supported by citations, ensuring credibility.",
+          "quote_found": true
+        },
+        "actionability": {
+          "score": 5,
+          "quote": "Premium silk sarees with exquisite finishing starting at Rs 3,800 each.",
+          "reason": "The market gap and pricing strategy are clearly defined and actionable.",
+          "quote_found": true
+        },
+        "plan_realism": {
+          "score": 4,
+          "quote": "Week 1: Establish a social media presence on Instagram and Facebook...",
+          "reason": "The plan is concrete but could include more budget details.",
+          "quote_found": true
+        }
+      },
+      "average": 4.75,
+      "summary": "The report is thorough and actionable, with minor improvements needed in the launch plan's budget details.",
+      "all_quotes_found": true,
+      "prompt_tokens": 1099,
+      "completion_tokens": 247
+    },
+    "judge_cost_usd": 0.00031
+  }
+]

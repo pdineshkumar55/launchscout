@@ -1,0 +1,83 @@
+{
+  "structure": {
+    "sections_ok": true,
+    "missing_sections": [],
+    "competitors": 3,
+    "enough_competitors": true,
+    "unresolved_citations": [],
+    "unused_sources": [],
+    "citations_ok": true
+  },
+  "sources": {
+    "total": 6,
+    "ok": 6,
+    "blocked": 0,
+    "timeout": 0,
+    "broken": 0,
+    "reachable_pct": 100.0,
+    "details": [
+      {
+        "url": "https://st-silks.vercel.app/",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://www.google.com/maps/place/?q=place_id:3740554809197849262",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://www.google.com/maps/place/?q=place_id:10220168662230964444",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://www.google.com/maps/place/?q=place_id:ChIJjfl7yjnNqTsR3Bjb4D9V1Y0",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://www.google.com/maps/place/?q=place_id:ChIJ7TO9HsfNqTsRNBm58nmsUqM",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://www.google.com/maps/place/?q=place_id:ChIJ5UatCFPMqTsRruod2cce6TM",
+        "status": "ok",
+        "code": 200
+      }
+    ]
+  },
+  "prices": {
+    "with_price": 1,
+    "verified": 1,
+    "verified_pct": 100.0,
+    "details": {
+      "ST Silks": {
+        "price": "Rs 4,200 per soft silk saree",
+        "status": "verified",
+        "numbers": [
+          "4200"
+        ]
+      },
+      "Om Saravana Silks and Readymades": {
+        "price": "Not listed",
+        "status": "not_listed",
+        "numbers": []
+      },
+      "Shubhankari Silks": {
+        "price": "Not listed",
+        "status": "not_listed",
+        "numbers": []
+      }
+    }
+  },
+  "sanitizer": {
+    "self_reference_sentences_removed": 0,
+    "chatty_phrases_removed": 0,
+    "style_phrases_replaced": 0,
+    "first_person_rewritten": 0,
+    "watch_words": []
+  },
+  "assembly_notes": []
+}

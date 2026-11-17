@@ -1,0 +1,90 @@
+{
+  "structure": {
+    "sections_ok": true,
+    "missing_sections": [],
+    "competitors": 4,
+    "enough_competitors": true,
+    "unresolved_citations": [],
+    "unused_sources": [],
+    "citations_ok": true
+  },
+  "sources": {
+    "total": 6,
+    "ok": 4,
+    "blocked": 2,
+    "timeout": 0,
+    "broken": 0,
+    "reachable_pct": 100.0,
+    "details": [
+      {
+        "url": "http://www.petgroomers.in/",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://happypetschennai.in/",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://thepetnest.com/pet-grooming/chennai",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://pawspace.in/pet-grooming-service-chennai/",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://www.justdial.com/Chennai/Happy-Pets-Opposite-Iob-Iit-Colony-Narayanapuram-Pallikaranai/044PXX44-XX44-150331162912-I4N6_BZDET",
+        "status": "blocked",
+        "code": 403
+      },
+      {
+        "url": "https://www.justdial.com/Bangalore/Pawspacein-Near-Ice-Treat-Cafe-Above-Houzlook-Showroom-HSR-Layout/080PXX80-XX80-211014134014-P2V2_BZDET/reviews",
+        "status": "blocked",
+        "code": 403
+      }
+    ]
+  },
+  "prices": {
+    "with_price": 2,
+    "verified": 2,
+    "verified_pct": 100.0,
+    "details": {
+      "Petgroomers": {
+        "price": "Not listed",
+        "status": "not_listed",
+        "numbers": []
+      },
+      "Happy Pets Chennai": {
+        "price": "Not listed",
+        "status": "not_listed",
+        "numbers": []
+      },
+      "ThePetNest": {
+        "price": "Rs 999+ per session",
+        "status": "verified",
+        "numbers": [
+          "999"
+        ]
+      },
+      "PawSpace": {
+        "price": "Rs 999 per session",
+        "status": "verified",
+        "numbers": [
+          "999"
+        ]
+      }
+    }
+  },
+  "sanitizer": {
+    "self_reference_sentences_removed": 0,
+    "chatty_phrases_removed": 0,
+    "style_phrases_replaced": 0,
+    "first_person_rewritten": 0,
+    "watch_words": []
+  },
+  "assembly_notes": []
+}

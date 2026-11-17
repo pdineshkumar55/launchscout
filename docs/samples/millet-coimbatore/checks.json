@@ -1,0 +1,74 @@
+{
+  "structure": {
+    "sections_ok": true,
+    "missing_sections": [],
+    "competitors": 3,
+    "enough_competitors": true,
+    "unresolved_citations": [],
+    "unused_sources": [],
+    "citations_ok": true
+  },
+  "sources": {
+    "total": 4,
+    "ok": 1,
+    "blocked": 2,
+    "timeout": 1,
+    "broken": 0,
+    "reachable_pct": 100.0,
+    "details": [
+      {
+        "url": "https://zerocals.in/",
+        "status": "blocked",
+        "code": 403
+      },
+      {
+        "url": "https://www.swiggy.com/city/coimbatore/millet-express-gandhipuram-rest1377098",
+        "status": "blocked",
+        "code": 403
+      },
+      {
+        "url": "https://mummyscloudkitchen.in/services/healthy-diet-meals-coimbatore",
+        "status": "ok",
+        "code": 200
+      },
+      {
+        "url": "https://www.zomato.com/coimbatore/zero-cals-1-peelamedu/reviews",
+        "status": "timeout",
+        "code": null,
+        "counts_as_reachable": true
+      }
+    ]
+  },
+  "prices": {
+    "with_price": 1,
+    "verified": 1,
+    "verified_pct": 100.0,
+    "details": {
+      "Zero Cals": {
+        "price": "Not listed",
+        "status": "not_listed",
+        "numbers": []
+      },
+      "Millet Express": {
+        "price": "Not listed",
+        "status": "not_listed",
+        "numbers": []
+      },
+      "Mummy's Cloud Kitchen": {
+        "price": "From Rs 180 per meal",
+        "status": "verified",
+        "numbers": [
+          "180"
+        ]
+      }
+    }
+  },
+  "sanitizer": {
+    "self_reference_sentences_removed": 0,
+    "chatty_phrases_removed": 0,
+    "style_phrases_replaced": 0,
+    "first_person_rewritten": 0,
+    "watch_words": []
+  },
+  "assembly_notes": []
+}

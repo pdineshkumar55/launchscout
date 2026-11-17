@@ -1,0 +1,301 @@
+{
+  "inputs": {
+    "idea": "Pet grooming at home",
+    "city": "Chennai",
+    "target": "Busy pet owners in apartments",
+    "known_competitors": "",
+    "country": "India",
+    "currency": "Rs",
+    "own_business": ""
+  },
+  "market": {
+    "competitors": [
+      {
+        "name": "Petgroomers",
+        "offering": "Doorstep dog and cat grooming",
+        "price": "Not listed",
+        "price_value": null,
+        "channels": [
+          "Own website"
+        ],
+        "offers": "10% off for prepaid booking",
+        "strength": "Offers a variety of grooming packages and services.",
+        "weakness": "Prices only available on the website after checkout.",
+        "location_type": "Local",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "name": "Happy Pets Chennai",
+        "offering": "Grooming, veterinary care & pet shop",
+        "price": "Not listed",
+        "price_value": null,
+        "channels": [
+          "Own website"
+        ],
+        "offers": "Various grooming services available.",
+        "strength": "Combines grooming with veterinary services and pet supplies.",
+        "weakness": "No specific pricing information available.",
+        "location_type": "Local",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "name": "ThePetNest",
+        "offering": "At-home pet grooming and spa",
+        "price": "Rs 999+ per session",
+        "price_value": 999.0,
+        "channels": [
+          "Own website",
+          "Mobile app"
+        ],
+        "offers": "Coupons available on mobile app.",
+        "strength": "Offers a range of grooming packages tailored to pet needs.",
+        "weakness": "Pricing varies based on the specific services chosen.",
+        "location_type": "Local",
+        "source_ids": [
+          3
+        ]
+      },
+      {
+        "name": "PawSpace",
+        "offering": "Professional pet grooming at home",
+        "price": "Rs 999 per session",
+        "price_value": 999.0,
+        "channels": [
+          "Own website",
+          "Mobile app"
+        ],
+        "offers": "Subscription plans available.",
+        "strength": "Offers a variety of grooming services with flexible scheduling.",
+        "weakness": "Additional charges for specific services may apply.",
+        "location_type": "Local",
+        "source_ids": [
+          4
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "title": "Petgroomers",
+        "url": "http://www.petgroomers.in/"
+      },
+      {
+        "id": 2,
+        "title": "Happy Pets Chennai",
+        "url": "https://happypetschennai.in/"
+      },
+      {
+        "id": 3,
+        "title": "ThePetNest",
+        "url": "https://thepetnest.com/pet-grooming/chennai"
+      },
+      {
+        "id": 4,
+        "title": "PawSpace",
+        "url": "https://pawspace.in/pet-grooming-service-chennai/"
+      }
+    ]
+  },
+  "feedback": {
+    "items": [
+      {
+        "competitor": "Petgroomers",
+        "praises": [],
+        "complaints": [
+          "Limited public reviews found"
+        ],
+        "source_ids": []
+      },
+      {
+        "competitor": "Happy Pets Chennai",
+        "praises": [
+          "Rated 4.4 by customers",
+          "Offers competitive prices"
+        ],
+        "complaints": [],
+        "source_ids": [
+          5
+        ]
+      },
+      {
+        "competitor": "ThePetNest",
+        "praises": [],
+        "complaints": [
+          "Limited public reviews found"
+        ],
+        "source_ids": []
+      },
+      {
+        "competitor": "PawSpace",
+        "praises": [
+          "Staff is professional, polite, and caring towards pets (other branch)"
+        ],
+        "complaints": [],
+        "source_ids": [
+          6
+        ]
+      }
+    ],
+    "common_complaints": [],
+    "sources": [
+      {
+        "id": 5,
+        "title": "Happy Pets in Pallikaranai,Chennai",
+        "url": "https://www.justdial.com/Chennai/Happy-Pets-Opposite-Iob-Iit-Colony-Narayanapuram-Pallikaranai/044PXX44-XX44-150331162912-I4N6_BZDET"
+      },
+      {
+        "id": 6,
+        "title": "2083 Reviews for Pawspace.in in HSR Layout, Bangalore",
+        "url": "https://www.justdial.com/Bangalore/Pawspacein-Near-Ice-Treat-Cafe-Above-Houzlook-Showroom-HSR-Layout/080PXX80-XX80-211014134014-P2V2_BZDET/reviews"
+      }
+    ]
+  },
+  "strategy": {
+    "matrix_notes": "Petgroomers offers doorstep dog and cat grooming but lacks transparent pricing, only providing costs after checkout. Happy Pets Chennai combines grooming with veterinary services and pet supplies, rated 4.4 by customers, but does not disclose specific pricing. ThePetNest provides at-home grooming starting at Rs 999, with a range of packages but limited public reviews. PawSpace also charges Rs 999 per session, offers subscription plans, and has positive feedback on staff professionalism, but may have additional charges for specific services.",
+    "market_gap": "There is a lack of clear, upfront pricing for grooming services in Chennai, which busy pet owners prefer. Customers want straightforward pricing without hidden fees, as seen in complaints about competitors' lack of transparency.",
+    "positioning_line": "At-home pet grooming with clear pricing starting at Rs 899 per session.",
+    "recommended_price": "Rs 899 per session.",
+    "price_rationale": "The recommended price of Rs 899 is positioned below ThePetNest and PawSpace, both priced at Rs 999. This competitive pricing strategy aims to attract busy pet owners looking for transparent and affordable grooming services."
+  },
+  "report_markdown": "# Competitor Report: Pet grooming at home, Chennai\n_Prepared 17 Nov 2026 · Target customer: Busy pet owners in apartments_\n\n## 1. Key Competitors\n| Competitor | Price | Channel | Strength | Weakness | Source |\n|---|---|---|---|---|---|\n| Petgroomers | Not listed | Own website | Offers a variety of grooming packages and services. | Prices only available on the website after checkout. | [1] |\n| Happy Pets Chennai | Not listed | Own website | Combines grooming with veterinary services and pet supplies. | No specific pricing information available. | [2] |\n| ThePetNest | Rs 999+ per session | Own website, Mobile app | Offers a range of grooming packages tailored to pet needs. | Pricing varies based on the specific services chosen. | [3] |\n| PawSpace | Rs 999 per session | Own website, Mobile app | Offers a variety of grooming services with flexible scheduling. | Additional charges for specific services may apply. | [4] |\n\n## 2. What Customers Complain About\n- Limited public reviews found (Petgroomers, ThePetNest) [n]\n\n## 3. Market Gap\nThere is a lack of clear, upfront pricing for grooming services in Chennai, which busy pet owners prefer. Customers want straightforward pricing without hidden fees, as seen in complaints about competitors' lack of transparency.\n\n## 4. Recommended Positioning\n> \"At-home pet grooming with clear pricing starting at Rs 899 per session.\"\n\nWhy this price: The recommended price of Rs 899 is positioned below ThePetNest and PawSpace, both priced at Rs 999. This competitive pricing strategy aims to attract busy pet owners looking for transparent and affordable grooming services.\n\n## 5. 30-Day Launch Plan\n- Week 1: Create a simple website and social media profiles to establish an online presence.\n- Week 2: Partner with local pet supply stores for cross-promotions and discounts.\n- Week 3: Test pricing by offering introductory rates at Rs 899 for the first month.\n- Week 4: Set a target to acquire 50 customers through social media ads and local flyers.\n\n## Sources\n[1] Petgroomers — http://www.petgroomers.in/  \n[2] Happy Pets Chennai — https://happypetschennai.in/  \n[3] ThePetNest — https://thepetnest.com/pet-grooming/chennai  \n[4] PawSpace — https://pawspace.in/pet-grooming-service-chennai/  ",
+  "evidence": [
+    {
+      "title": "Happy Pets in Pallikaranai,Chennai",
+      "url": "https://www.justdial.com/Chennai/Happy-Pets-Opposite-Iob-Iit-Colony-Narayanapuram-Pallikaranai/044PXX44-XX44-150331162912-I4N6_BZDET",
+      "text": "Rated 4.3 based on 13 Customer Reviews and&nbsp;... They have received a 4.4 rating from their customers. available at competitive prices. between 09:30 - 21:30",
+      "competitor": "Happy Pets Chennai",
+      "id": 5
+    },
+    {
+      "title": "2083 Reviews for Pawspace.in in HSR Layout, Bangalore",
+      "url": "https://www.justdial.com/Bangalore/Pawspacein-Near-Ice-Treat-Cafe-Above-Houzlook-Showroom-HSR-Layout/080PXX80-XX80-211014134014-P2V2_BZDET/reviews",
+      "text": "[other location] Many customers appreciated the grooming and boarding services provided by Pawspace.The staff was professional, polite, and caring towards the pets",
+      "competitor": "PawSpace",
+      "id": 6
+    },
+    {
+      "title": "PawSpace",
+      "url": "https://in.linkedin.com/company/pawspace-india",
+      "text": "[other location] This was followed by months of rigorous research, phone calls, field trips, and thousands of detailed reviews on the pet care services industry in India",
+      "competitor": "PawSpace",
+      "id": 7
+    }
+  ],
+  "searches": [
+    "Pet grooming at home Chennai",
+    "Pet grooming delivery Chennai",
+    "Pet grooming subscription Chennai",
+    "Pet grooming Chennai price",
+    "Pet grooming services Chennai",
+    "Petgroomers Chennai reviews",
+    "Happy Pets Chennai Chennai reviews",
+    "ThePetNest Chennai reviews",
+    "PawSpace Chennai reviews",
+    "Petgroomers reviews Chennai",
+    "ThePetNest reviews Chennai"
+  ],
+  "fetches": [
+    "http://dogsstylingpetgroomingstudio.in/",
+    "http://www.petgroomers.in/",
+    "https://thepetnest.com/pet-grooming/chennai",
+    "https://happypetschennai.in/",
+    "https://pawspace.in/pet-grooming-service-chennai/"
+  ],
+  "seen_urls": [
+    "http://dogsstylingpetgroomingstudio.in",
+    "http://www.petgroomers.in",
+    "https://apps.apple.com/in/app/1632865181?l=ml&see-all=reviews&platform=iphone",
+    "https://apps.apple.com/in/app/pawspace-doorstep-pet-care/id6478494508",
+    "https://bharathlisting.com/listings/chennai-tamil-nadu/chennai/pet-grooming",
+    "https://gullytails.com/chennai/category/pet-care-services",
+    "https://happypetschennai.in",
+    "https://in.linkedin.com/company/pawspace-india",
+    "https://lbb.in/chennai/top-dog-spas-in-chennai",
+    "https://m.indiamart.com/city/chennai/pet-grooming-service.html",
+    "https://magicpin.in/Chennai/Mahalingapuram/Other/Thepetnest-Pet-Boarding-Service-In-Chennai/store/2100783/reviews?srsltid=AYCX9vJcetkkdsppD-JWIDxgKGEqKhuI-4mgd3aPvGtwvhUdxrnP1KfH",
+    "https://pawsonwheels.in/reviews",
+    "https://pawspace.in/pet-grooming-service-chennai",
+    "https://pawspace.in/pet-relocation-chennai",
+    "https://play.google.com/store/apps/details?id=com.app.pawspace&hl=en_IN",
+    "https://play.google.com/store/apps/details?id=com.thepetnest.customer&hl=en_IN",
+    "https://premaspets.blogspot.com",
+    "https://sploot.space/dog-grooming/chennai",
+    "https://thepetnest-veterinary-clinic.localo.site/reviews",
+    "https://thepetnest.com/blog/profile/7-guest-user",
+    "https://thepetnest.com/customer-reviews",
+    "https://thepetnest.com/pet-grooming-service-reviews",
+    "https://thepetnest.com/pet-grooming/chennai",
+    "https://vetic.in/pet-grooming-chennai?srsltid=AYCX9vJo6QQg4YiPl2CNiQ_CwZZ8A5_LMkGIw97lXGck3Fp8zPJeJlv_",
+    "https://vetic.in/pet-grooming-chennai?srsltid=AYCX9vK0TiqmVqFGYNMKrZDFb_pfilxpOy3curqWn-4uwXtjJZ3VfZIb",
+    "https://www.ambitionbox.com/reviews/thepetnest-reviews",
+    "https://www.arikx.com/work/happy-pets-chennai",
+    "https://www.facebook.com/Pawspace.in",
+    "https://www.facebook.com/Pawspace.in/videos/pawspace-is-thanking-you-for-giving-such-an-exceptional-testimonial-review-and-f/3338054629765481",
+    "https://www.facebook.com/Threebestbusinesses/videos/-3-best-pet-grooming-services-in-chennai-top-pet-groomers-every-pet-parent-shoul/1392594706178629",
+    "https://www.facebook.com/fb-answers/pet-groomer-in-chennai",
+    "https://www.facebook.com/fb-answers/pet-grooming-in-chennai",
+    "https://www.facebook.com/groups/176632175684594/posts/28033501226237648",
+    "https://www.facebook.com/groups/402322073758209/posts/2032884434035290",
+    "https://www.facebook.com/vinoth.kumar.643443/videos/happy-pet-families-%EF%B8%8Fchennai-/1427553305933333",
+    "https://www.fixando.in/110/Chennai/1090/pet-care",
+    "https://www.getsomepaws.com",
+    "https://www.google.com/maps/place?q=place_id:10544796544480227661",
+    "https://www.google.com/maps/place?q=place_id:1603841904184137868",
+    "https://www.google.com/maps/place?q=place_id:5197753014963736516",
+    "https://www.happypetschennai.in",
+    "https://www.instagram.com/happypetschennai",
+    "https://www.instagram.com/p/DTi-rVwE7kg?hl=en",
+    "https://www.instagram.com/pawspace.in?hl=en",
+    "https://www.instagram.com/petgroomers.in",
+    "https://www.instagram.com/pets101_india?hl=en",
+    "https://www.instagram.com/popular/pet-groomers-chennai",
+    "https://www.instagram.com/popular/pet-grooming-services-chennai",
+    "https://www.instagram.com/popular/petschennai",
+    "https://www.instagram.com/reel/DVI2_llAf_L",
+    "https://www.instagram.com/stories/thepetnestofficial",
+    "https://www.instagram.com/thepet_nest",
+    "https://www.justdial.com/Bangalore/Pawspacein-Near-Ice-Treat-Cafe-Above-Houzlook-Showroom-HSR-Layout/080PXX80-XX80-211014134014-P2V2_BZDET/reviews",
+    "https://www.justdial.com/Chennai/Dog-Grooming-Kit-Dealers/nct-11366408",
+    "https://www.justdial.com/Chennai/Happy-Pets-Opposite-Iob-Iit-Colony-Narayanapuram-Pallikaranai/044PXX44-XX44-150331162912-I4N6_BZDET",
+    "https://www.justdial.com/Chennai/Happypets-Opposite-19-Near-Perumal-Koil-Kakanji-Colony/044PXX44-XX44-180517201529-P9W6_BZDET",
+    "https://www.justdial.com/Chennai/Mobile-Pet-Grooming-Chennai-Door-Step-Services-Villivakkam/044PXX44-XX44-221209033922-I5W6_BZDET",
+    "https://www.justdial.com/Chennai/Mobile-Pet-Grooming-Services-in-Besant-Nagar/nct-10626387",
+    "https://www.justdial.com/Chennai/Mobile-Pet-Grooming-Services-in-Maduravoyal/nct-10626387",
+    "https://www.justdial.com/Chennai/Mobile-Pet-Grooming-Services/nct-10626387",
+    "https://www.justdial.com/Chennai/My-Pet-Spa-Dog-and-Cat-Grooming-At-Door-Step-Near-Padi-Bridge-100-Feet-Road-Villivakkam/044PXX44-XX44-160505211548-I9W1_BZDET/reviews",
+    "https://www.justdial.com/Chennai/Pet-Care-Takers-At-Home/nct-16265141",
+    "https://www.justdial.com/Chennai/Pet-Groomers-Madipakkam/044PXX44-XX44-210903034454-J5Y9_BZDET/reviews",
+    "https://www.justdial.com/Chennai/Pet-Grooming-Services-At-Home-in-Anna-Nagar/nct-14343070",
+    "https://www.justdial.com/Chennai/Pet-Grooming-Services-with-Free-Home-Delivery-in-Thoraipakkam/nct-11002277-att-vet145",
+    "https://www.justdial.com/Chennai/Pet-Grooming-Services/nct-11002277",
+    "https://www.justdial.com/Chennai/Thepetnest-Pet-Boarding-Service-Mahalingapuram/044PXX44-XX44-240722160054-Q7W5_BZDET/reviews",
+    "https://www.justdial.com/ta/Chennai/Cat-Grooming-Services/nct-11301529",
+    "https://www.littleangelspetclinic.com/pet-grooming-near-me-chennai.html",
+    "https://www.mouthshut.com/product-reviews/thepetnest-reviews-926088435",
+    "https://www.pamperedpaws.in",
+    "https://www.petbacker.com/india/grooming/tamil-nadu/chennai/petgroomers-home-groomer",
+    "https://www.petbacker.com/s/dog-grooming/chennai--tn--india",
+    "https://www.petbacker.com/s/dog-grooming/chennai-city--%E5%9D%A6%E7%B1%B3%E7%88%BE%E7%B4%8D%E6%9D%9C%E9%82%A6--%E5%8D%B0%E5%BA%A6",
+    "https://www.petbacker.com/s/pet-grooming/chennai--india--india",
+    "https://www.petbacker.com/s/pet-training/chennai--tamil-nadu--india",
+    "https://www.petbacker.in/india/daycare/tamil-nadu/chennai/veronicas-happy-pets-day-nursery",
+    "https://www.petbacker.in/india/grooming/tamil-nadu/chennai/dock-doom-home-groomer",
+    "https://www.petbacker.in/india/sitting/tamil-nadu/chennai/pawfect-companion-chennai-home-visit-pet-sitter",
+    "https://www.petbacker.in/s/pet-grooming/chennai--tamil-nadu--india",
+    "https://www.petcure.co.in",
+    "https://www.petgroomers.in",
+    "https://www.petgroomly.com/pet-grooming/chennai/ashok-nagar",
+    "https://www.petgroomly.com/pet-grooming/chennai/perungudi",
+    "https://www.petparadise.co.in",
+    "https://www.starofservice.in/dir/tamil-nadu/chennai/chennai/pet-grooming",
+    "https://www.starofservice.in/dir/tamil-nadu/chennai/chennai/pet-sitting",
+    "https://www.sulekha.com/happy-pets-perambur-chennai-4798760-contact-address",
+    "https://www.youtube.com/watch?v=4tNnGlxaxX0",
+    "https://www.youtube.com/watch?v=nK_vEEFixFg",
+    "https://zutail.com/pet-grooming-chennai"
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "inputs": {
+    "idea": "Silk saree shop",
+    "city": "Udumalpet",
+    "target": "Women buying silk sarees for weddings and festivals",
+    "known_competitors": "",
+    "country": "India",
+    "currency": "Rs",
+    "own_business": ""
+  },
+  "market": {
+    "competitors": [
+      {
+        "name": "ST Silks",
+        "offering": "Kanchipuram silks, soft silks, wedding collections",
+        "price": "Rs 4,200 per soft silk saree",
+        "price_value": 4200.0,
+        "channels": [
+          "WhatsApp",
+          "Own website"
+        ],
+        "offers": "16% off on selected Kanchipuram Silk sarees",
+        "strength": "Wide range of silk sarees including bridal collections.",
+        "weakness": "Limited online presence outside WhatsApp.",
+        "location_type": "Local",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "name": "Om Saravana Silks and Readymades",
+        "offering": "Silk sarees and readymades",
+        "price": "Not listed",
+        "price_value": null,
+        "channels": [
+          "Own website"
+        ],
+        "offers": "Not specified.",
+        "strength": "High customer rating with many reviews.",
+        "weakness": "Website currently unavailable.",
+        "location_type": "Local",
+        "source_ids": [
+          4
+        ]
+      },
+      {
+        "name": "Shubhankari Silks",
+        "offering": "Designer silk sarees",
+        "price": "Not listed",
+        "price_value": null,
+        "channels": [
+          "Facebook"
+        ],
+        "offers": "Public 2-day delivery.",
+        "strength": "Specializes in designer and festive sarees.",
+        "weakness": "Limited pricing information available.",
+        "location_type": "Local",
+        "source_ids": [
+          5
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 2,
+        "title": "ST Silks – Pure Silks & Sarees, Udumalpet",
+        "url": "https://st-silks.vercel.app/"
+      },
+      {
+        "id": 4,
+        "title": "Om Saravana Silks and Readymades listing",
+        "url": "https://www.google.com/maps/place/?q=place_id:3740554809197849262"
+      },
+      {
+        "id": 5,
+        "title": "Shubhankari Silks listing",
+        "url": "https://www.google.com/maps/place/?q=place_id:10220168662230964444"
+      }
+    ]
+  },
+  "feedback": {
+    "items": [
+      {
+        "competitor": "ST Silks",
+        "praises": [
+          "Affordable prices for handpicked sarees."
+        ],
+        "complaints": [],
+        "source_ids": [
+          6
+        ]
+      },
+      {
+        "competitor": "Om Saravana Silks and Readymades",
+        "praises": [
+          "High-quality products and friendly service.",
+          "Good service for regular customers."
+        ],
+        "complaints": [],
+        "source_ids": [
+          7
+        ]
+      },
+      {
+        "competitor": "Shubhankari Silks",
+        "praises": [
+          "Unique collections and good service.",
+          "Nice collection with a good shopping experience."
+        ],
+        "complaints": [
+          "Poor finishing on saree stitching."
+        ],
+        "source_ids": [
+          10
+        ]
+      }
+    ],
+    "common_complaints": [],
+    "sources": [
+      {
+        "id": 6,
+        "title": "Udumalpet ST Silks on Google",
+        "url": "https://www.google.com/maps/place/?q=place_id:ChIJ7TO9HsfNqTsRNBm58nmsUqM"
+      },
+      {
+        "id": 7,
+        "title": "Om Saravana Silks and Readymades on Google",
+        "url": "https://www.google.com/maps/place/?q=place_id:ChIJ5UatCFPMqTsRruod2cce6TM"
+      },
+      {
+        "id": 10,
+        "title": "Shubhankari silks on Google",
+        "url": "https://www.google.com/maps/place/?q=place_id:ChIJjfl7yjnNqTsR3Bjb4D9V1Y0"
+      }
+    ]
+  },
+  "strategy": {
+    "matrix_notes": "ST Silks offers a range of Kanchipuram and soft silk sarees priced at Rs 4,200 per soft silk saree, with a 16% discount on selected items. Om Saravana Silks and Readymades has a high customer rating but does not list prices and has an unavailable website. Shubhankari Silks specializes in designer sarees but lacks pricing information and has received complaints about poor finishing on saree stitching. Overall, ST Silks has a clear pricing structure, while the other competitors have limitations in online presence and pricing transparency.",
+    "market_gap": "There is a market gap for high-quality silk sarees with transparent pricing and superior finishing, as evidenced by customer complaints regarding the stitching quality at Shubhankari Silks.",
+    "positioning_line": "Premium silk sarees with exquisite finishing starting at Rs 3,800 each.",
+    "recommended_price": "Rs 3,800 each",
+    "price_rationale": "The recommended price of Rs 3,800 is positioned below ST Silks' Rs 4,200, offering a competitive advantage while ensuring high-quality finishing that addresses customer concerns. This price point also aims to attract customers looking for quality without the premium price tag."
+  },
+  "report_markdown": "# Competitor Report: Silk saree shop, Udumalpet\n_Prepared 17 Nov 2026 · Target customer: Women buying silk sarees for weddings and festivals_\n\n## 1. Key Competitors\n| Competitor | Price | Channel | Strength | Weakness | Source |\n|---|---|---|---|---|---|\n| ST Silks | Rs 4,200 per soft silk saree [2] | WhatsApp, Own website | Wide range of silk sarees including bridal collections. | Limited online presence outside WhatsApp. | [2] |\n| Om Saravana Silks and Readymades | Not listed | Own website | High customer rating with many reviews. | Website currently unavailable. | [4] |\n| Shubhankari Silks | Not listed | Facebook | Specializes in designer and festive sarees. | Limited pricing information available. | [5] |\n\n## 2. What Customers Complain About\n- Poor finishing on saree stitching (Shubhankari Silks) [10]\n\n## 3. Market Gap\nThere is a market gap for high-quality silk sarees with transparent pricing and superior finishing, as evidenced by customer complaints regarding the stitching quality at Shubhankari Silks.\n\n## 4. Recommended Positioning\n> \"Premium silk sarees with exquisite finishing starting at Rs 3,800 each.\"\n\nWhy this price: The recommended price of Rs 3,800 is positioned below ST Silks' Rs 4,200, offering a competitive advantage while ensuring high-quality finishing that addresses customer concerns. This price point also aims to attract customers looking for quality without the premium price tag.\n\n## 5. 30-Day Launch Plan\n- Week 1: Establish a social media presence on Instagram and Facebook to showcase saree collections and engage with potential customers.\n- Week 2: Partner with local wedding planners and event organizers to promote sarees for upcoming weddings and festivals.\n- Week 3: Conduct a pricing test by offering an introductory discount on the first few purchases to attract initial customers.\n- Week 4: Set a target to sell at least 50 sarees by the end of the month through online and local channels.\n\n## Sources\n[2] ST Silks – Pure Silks & Sarees, Udumalpet — https://st-silks.vercel.app/  \n[4] Om Saravana Silks and Readymades listing — https://www.google.com/maps/place/?q=place_id:3740554809197849262  \n[5] Shubhankari Silks listing — https://www.google.com/maps/place/?q=place_id:10220168662230964444  \n[6] Udumalpet ST Silks on Google — https://www.google.com/maps/place/?q=place_id:ChIJ7TO9HsfNqTsRNBm58nmsUqM  \n[7] Om Saravana Silks and Readymades on Google — https://www.google.com/maps/place/?q=place_id:ChIJ5UatCFPMqTsRruod2cce6TM  \n[10] Shubhankari silks on Google — https://www.google.com/maps/place/?q=place_id:ChIJjfl7yjnNqTsR3Bjb4D9V1Y0  ",
+  "evidence": [
+    {
+      "title": "Udumalpet ST Silks on Google",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ7TO9HsfNqTsRNBm58nmsUqM",
+      "text": "Google rating 4.9 from 17 reviews. Review: \"This place is nice and have a lot of collections to buy.\". Review: \"Such a hand picked collection of sarees that too in affordable prices.\"",
+      "competitor": "ST Silks",
+      "id": 6
+    },
+    {
+      "title": "Om Saravana Silks and Readymades on Google",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ5UatCFPMqTsRruod2cce6TM",
+      "text": "Google rating 4.7 from 925 reviews. Review: \"Good Regular customer Nice service Quality products\". Review: \"Excellent quality clothing with friendly staff-highly recommend!\"",
+      "competitor": "Om Saravana Silks and Readymades",
+      "id": 7
+    },
+    {
+      "title": "Om Saravana Silks and Readymades Udumalai (ஓம் ...",
+      "url": "https://www.youtube.com/channel/UCwd35qbDTQSyXibXHO_gWlw",
+      "text": "Our Customers lovable Reviews #omsaravanasilks #udumalpet #weddingcollection #review. 1.4K views · All Collections under in one roof! #omsaravanasilks",
+      "competitor": "Om Saravana Silks and Readymades",
+      "id": 8
+    },
+    {
+      "title": "Om Saravana Silks and Readymades - Tripadvisor",
+      "url": "https://www.tripadvisor.co.nz/Attraction_Review-g8329100-d34442405-Reviews-Om_Saravana_Silks_and_Readymades-Udumalpet_Tiruppur_District_Tamil_Nadu.html",
+      "text": "No reviews for this property yet. Write a review through Viator, a Tripadvisor company. OM SARAVANA SILKS AND READYMADES - All You SHOULD Know Before You Go",
+      "competitor": "Om Saravana Silks and Readymades",
+      "id": 9
+    },
+    {
+      "title": "Shubhankari silks on Google",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJjfl7yjnNqTsR3Bjb4D9V1Y0",
+      "text": "Google rating 4.1 from 69 reviews. Review: \"Unique collections and service good\". Review: \"Saree falls and stitching they charge 150 but very bad finishing.\". Review: \"Nice collection and good experience\"",
+      "competitor": "Shubhankari Silks",
+      "id": 10
+    }
+  ],
+  "searches": [
+    "Silk saree shop Udumalpet",
+    "Silk saree delivery Udumalpet",
+    "Silk saree Udumalpet price",
+    "Silk saree shop JustDial Udumalpet",
+    "ST Silks Udumalpet reviews",
+    "Om Saravana Silks and Readymades Udumalpet reviews",
+    "Shubhankari Silks Udumalpet reviews"
+  ],
+  "fetches": [
+    "https://www.omsaravanasilks.com/",
+    "https://st-silks.vercel.app/"
+  ],
+  "seen_urls": [
+    "https://st-silks.vercel.app",
+    "https://velmayilsilks.com",
+    "https://www.facebook.com/61570267173753/posts/-affordable-elegance-in-every-drape-introducing-our-beautiful-semi-kanchipuram-s/122171092832675572",
+    "https://www.facebook.com/ShubhankariSilks",
+    "https://www.facebook.com/ShubhankariSilks/posts/collect-your-favourite-oneshubhankarisilks-udumalpet-udumalai-coimbatore-instago/122113185285048512",
+    "https://www.facebook.com/ShubhankariSilks/posts/heres-what-our-lovely-customer-had-to-say-about-their-shopping-experience-at-shu/122106373047048512",
+    "https://www.facebook.com/prakaasht",
+    "https://www.facebook.com/velavansilksudumalpet/videos/8th-lucky-customer-who-won-1-savoreign-silver-coin-velavansilksandreadymades-udu/1518308883458947",
+    "https://www.facebook.com/velavansilksudumalpet?locale=mt_MT",
+    "https://www.google.com/maps/place?q=place_id:10220168662230964444",
+    "https://www.google.com/maps/place?q=place_id:11768658416035764532",
+    "https://www.google.com/maps/place?q=place_id:2265838983241626435",
+    "https://www.google.com/maps/place?q=place_id:3740554809197849262",
+    "https://www.google.com/maps/place?q=place_id:ChIJ5UatCFPMqTsRruod2cce6TM",
+    "https://www.google.com/maps/place?q=place_id:ChIJ7TO9HsfNqTsRNBm58nmsUqM",
+    "https://www.google.com/maps/place?q=place_id:ChIJjfl7yjnNqTsR3Bjb4D9V1Y0",
+    "https://www.indiamart.com/handloom-softsilk-sarees?srsltid=AYCX9vJ4BcjKKzn56ruqVx9e98o42im8GVtuf4C_JOTNqFkutdPObZop",
+    "https://www.indiamart.com/proddetail/sarees-20757248555.html?srsltid=AYCX9vJvGFFUC0aURA3sBy7YbMMtTPzjMr4ly4zzHUFkb5Z0EMMt-nvs",
+    "https://www.instagram.com/popular/subhankari-silks",
+    "https://www.instagram.com/reel/DBYrnXJvLTZ",
+    "https://www.instagram.com/reel/DRHbxpgE-gh",
+    "https://www.instagram.com/reel/Da4suWBs32w",
+    "https://www.justdial.com/Udumalpet/Cotton-Saree-Manufacturers/nct-10140812",
+    "https://www.justdial.com/Udumalpet/Cotton-Silk-Saree-Retailers-in-Amaravathi-Nagar/nct-11188925",
+    "https://www.justdial.com/Udumalpet/Designer-Saree-Retailers/nct-10157273",
+    "https://www.justdial.com/Udumalpet/Designer-Silk-Saree-Retailers/nct-10954007",
+    "https://www.justdial.com/Udumalpet/Fancy-Silk-Saree-Retailers-in-Gandhi-Nagar/nct-10200414",
+    "https://www.justdial.com/Udumalpet/Fancy-Silk-Saree-Retailers/nct-10200414",
+    "https://www.justdial.com/Udumalpet/Fancy-Silk-Saree-Wholesalers/nct-10806650",
+    "https://www.justdial.com/Udumalpet/Handloom-Silk-Saree-Wholesalers/nct-11285154",
+    "https://www.justdial.com/Udumalpet/Matka-Silk-Saree-Retailers/nct-11485708",
+    "https://www.justdial.com/Udumalpet/Nine-Yard-Silk-Saree-Dealers/nct-11934654",
+    "https://www.justdial.com/Udumalpet/Pure-Silk-Saree-Dealers/nct-11725064",
+    "https://www.justdial.com/Udumalpet/S-T-Silks-Singapore-Nagar/9999P4252-4252-221123031615-N8B5_BZDET",
+    "https://www.justdial.com/Udumalpet/Saree-Retailers-in-Madathukulam/nct-10420585",
+    "https://www.justdial.com/Udumalpet/Second-Hand-Silk-Saree-Dealers/nct-15957291",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Bodipatti/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Gandhi-Nagar/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Gudimangalam/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Krishnapuram/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Metrathi/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Pallapalayam/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Pethappampatti/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Pethappampatti/nct-10437105/page-3",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers-in-Pollachi-Road-Pethappampatti/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers/nct-10437105",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Retailers/nct-10437105/page-2",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Wholesalers-in-Pethappampatti/nct-10437108",
+    "https://www.justdial.com/Udumalpet/Silk-Saree-Wholesalers/nct-10437108",
+    "https://www.justdial.com/Udumalpet/Surat-Saree-Retailers/nct-11242180",
+    "https://www.oldsilks.com/old-pattu-saree-buyers-in-udumalpet",
+    "https://www.omsaravanasilks.com",
+    "https://www.tripadvisor.co.nz/Attraction_Review-g8329100-d34442405-Reviews-Om_Saravana_Silks_and_Readymades-Udumalpet_Tiruppur_District_Tamil_Nadu.html",
+    "https://www.tripadvisor.com.sg/Attraction_Review-g8329100-d15946111-Reviews-Velavan_Silks_and_Readymades-Udumalpet_Tiruppur_District_Tamil_Nadu.html",
+    "https://www.tripadvisor.in/Attraction_Review-g8329100-d15946111-Reviews-Velavan_Silks_and_Readymades-Udumalpet_Tiruppur_District_Tamil_Nadu.html",
+    "https://www.wheree.com/Womens_Clothing-c76-g3396272-udumalaippettai",
+    "https://www.youtube.com/channel/UCwd35qbDTQSyXibXHO_gWlw"
+  ]
+}

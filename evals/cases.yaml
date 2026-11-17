@@ -1,0 +1,20 @@
+# Benchmark cases (3, agreed with the developer to keep cost down). Run: python -m evals.run_bench
+#
+# Private per-case values (e.g. the developer's own shop for "own_business") live in
+# evals/private.yaml, which is git-ignored and merged in at run time. Example:
+#   silk-saree-udumalpet:
+#     own_business: <your shop name>
+- name: millet-coimbatore
+  idea: Healthy millet meal boxes
+  city: Coimbatore
+  target: Office workers and health-conscious families
+
+- name: pet-grooming-chennai
+  idea: Pet grooming at home
+  city: Chennai
+  target: Busy pet owners in apartments
+
+- name: silk-saree-udumalpet
+  idea: Silk saree shop
+  city: Udumalpet
+  target: Women buying silk sarees for weddings and festivals
