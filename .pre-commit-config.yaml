@@ -1,0 +1,7 @@
+# Secret scan before every commit. One-time setup:  pip install pre-commit && pre-commit install
+# (the first run downloads and builds gitleaks; later commits take a few seconds)
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.0
+    hooks:
+      - id: gitleaks
