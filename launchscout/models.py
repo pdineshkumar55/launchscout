@@ -67,6 +67,30 @@ class Strategy(BaseModel):
     positioning_line: str = Field(description="one-line offer with price")
     recommended_price: str
     price_rationale: str
+    # Filled only when the requester named their own business (empty for older runs).
+    you_ahead: list[str] = Field(default_factory=list, description="where the own business is ahead, cited")
+    competitors_ahead: list[str] = Field(default_factory=list,
+                                         description="where a named competitor is ahead, cited")
+    actions: list[str] = Field(default_factory=list, description="3-5 actions: what to fix or lean on, cited")
+
+
+class OwnBusinessScan(BaseModel):
+    """What public sources say about the requester's own business. Stored in raw.json as "own"."""
+
+    name: str
+    found: bool = False
+    note: str = ""                       # e.g. "No public listing or reviews found for X in Y."
+    listing_name: str = ""               # name as shown on the listing that matched
+    rating: float | None = None
+    reviews: int | None = None
+    rating_source_ids: list[int] = []
+    price: str = "Not listed"
+    price_source_ids: list[int] = []
+    channels: list[dict] = []            # [{"name": "Instagram", "source_ids": [n]}]
+    praises: list[dict] = []             # [{"text": str, "source_ids": [n]}]
+    complaints: list[dict] = []
+    sources: list[dict] = []             # [{"id", "title", "url"}], ids after the market/evidence ids
+    competitor_ratings: dict[str, dict] = {}  # name -> {"rating", "reviews", "source_ids"}
 
 
 class ResearchInputs(BaseModel):

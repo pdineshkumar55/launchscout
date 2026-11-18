@@ -8,7 +8,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from launchscout.events import STAGE_NAMES
+from launchscout.events import OWN_STAGE, stage_label, stage_order
 from launchscout.pipeline import SavedRun
 
 from . import copy as c
@@ -25,11 +25,12 @@ def how_it_works() -> None:
 
 
 def stage_cards(stage_state: dict[int, str]) -> None:
-    for n in range(1, 5):
+    # The "Your business scan" card appears only when the run has that stage.
+    for n in stage_order(OWN_STAGE in stage_state):
         state = stage_state.get(n, "waiting")
         with st.container(border=True):
             left, right = st.columns([3, 1])
-            left.markdown(f"{STATUS_ICON[state]} **Stage {n} · {STAGE_NAMES[n]}**")
+            left.markdown(f"{STATUS_ICON[state]} **{stage_label(n)}**")
             right.markdown(STATUS_TEXT[state])
 
 
@@ -55,7 +56,43 @@ def _price_check_label(status: str | None) -> str:
     return {"verified": c.PRICE_CONFIRMED, "unverified": c.PRICE_NOT_CONFIRMED}.get(status or "", c.PRICE_NOT_LISTED)
 
 
+def own_business_card(run: SavedRun) -> None:
+    """Highlighted card for the requester's own business, shown above the competitor rows."""
+    own = run.own
+    if not own:
+        return
+    url_by_id = {s["id"]: str(s["url"]) for s in own.get("sources", [])}
+
+    def links(ids) -> str:
+        return " ".join(f"[{c.OWN_SOURCE_LINK}]({url_by_id[i]})" for i in dict.fromkeys(ids or []) if i in url_by_id)
+
+    with st.container(border=True):
+        st.markdown(f"**{c.OWN_CARD_HEADER.format(name=own.get('name', ''))}**")
+        if not own.get("found"):
+            st.info(own.get("note") or c.OWN_NOT_FOUND)
+            return
+        m1, m2, m3 = st.columns(3)
+        m1.metric(c.OWN_RATING, own["rating"] if own.get("rating") is not None else c.OWN_NONE)
+        m2.metric(c.OWN_REVIEWS, f"{own['reviews']:,}" if own.get("reviews") else c.OWN_NONE)
+        m3.metric(c.COL_PRICE, own.get("price") or c.PRICE_NOT_LISTED)
+        channels = ", ".join(ch["name"] for ch in own.get("channels") or []) or c.OWN_NONE
+        lines = [f"**{c.COL_CHANNELS}:** {channels}"]
+        for key, label in (("praises", c.OWN_PRAISE), ("complaints", c.OWN_COMPLAINTS)):
+            pts = own.get(key) or []
+            if pts:
+                lines.append(f"**{label}:** " + "; ".join(f"{p['text']} {links(p.get('source_ids'))}" for p in pts))
+        all_ids = [s["id"] for s in own.get("sources", []) if s["id"] in set(
+            (own.get("rating_source_ids") or []) + (own.get("price_source_ids") or [])
+            + [ch["source_ids"][0] for ch in own.get("channels") or [] if ch.get("source_ids")])]
+        if all_ids:
+            lines.append(f"**{c.COL_SOURCE}:** {links(all_ids)}")
+        if own.get("note"):
+            lines.append(f"_{own['note']}_")
+        st.markdown("  \n".join(lines))
+
+
 def competitors_table(run: SavedRun) -> None:
+    own_business_card(run)
     checks = _load_checks(run.run_dir)
     price_details = (checks.get("prices") or {}).get("details", {})
     url_by_id = {s["id"]: str(s["url"]) for s in run.market.get("sources", [])}

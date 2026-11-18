@@ -117,3 +117,34 @@ def test_failure_before_stage1_is_failed(fake_env, inp, monkeypatch):
     run.start()
     wait(run)
     assert run.status == FAILED and run.final is None
+
+
+def test_own_business_stage_runs_between_stage1_and_2(fake_env, monkeypatch):
+    from launchscout.models import ResearchInputs
+    from launchscout.pipeline import load_run
+    inner = runner_mod.build_crew
+
+    def build(inp, ctx, run_dir):
+        built = inner(inp, ctx, run_dir)
+
+        def after_market(m):
+            ctx.results["own"] = {"name": inp.own_business, "found": False,
+                                  "note": f"No public listing or reviews found for {inp.own_business} in Testcity."}
+            ctx.emit("own_start", inp.own_business)
+            ctx.emit("own_done", inp.own_business)
+        ctx.after_market = after_market
+        return built
+    monkeypatch.setattr(runner_mod, "build_crew", build)
+    run = ResearchRun(ResearchInputs(idea="silk saree shop", city="Testcity", own_business="Sri Example Silks"))
+    assert list(run.stage_state) == [1, 5, 2, 3, 4]
+    run.start()
+    wait(run)
+    assert run.status == DONE
+    assert run.stage_state == {1: "done", 5: "done", 2: "done", 3: "done", 4: "done"}
+    texts = [e.text for e in run.events]
+    i1 = texts.index("Stage 1 complete: 3 competitors found")
+    i_own = texts.index("Your business scan started")
+    i_done = texts.index("Your business scan complete: no public listing found")
+    assert i1 < i_own < i_done < texts.index("Stage 2 · Customer feedback started")
+    saved = load_run(run.run_dir)
+    assert saved.own["found"] is False and "## 3. How You Compare" in saved.markdown
