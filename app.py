@@ -33,9 +33,10 @@ SAMPLE_INPUT = {"idea": "Healthy millet meal boxes", "city": "Coimbatore", "own"
                 "target": "Office workers and health-conscious families", "competitors": "",
                 "country": "India", "currency": "Rs"}
 ss = st.session_state
+FORM_DEFAULTS = {"f_idea": "", "f_city": "", "f_target": "", "f_competitors": "", "f_own": "",
+                 "f_country": "India", "f_currency": "Rs"}
 ss.setdefault("runs_started", 0)
-for key, value in {"f_idea": "", "f_city": "", "f_target": "", "f_competitors": "", "f_own": "",
-                   "f_country": "India", "f_currency": "Rs"}.items():
+for key, value in FORM_DEFAULTS.items():
     ss.setdefault(key, value)
 
 
@@ -78,8 +79,14 @@ def open_past(run_dir: Path, created) -> None:
 
 
 def new_research() -> None:
+    """Back to an empty form: drop the shown report and clear every input field.
+
+    Runs as a button callback, i.e. before the form widgets are drawn again, so the reset shows at once."""
     ss.pop("run", None)
     ss.view_dir = None
+    ss.view_note = None
+    for key, value in FORM_DEFAULTS.items():
+        ss[key] = value
 
 
 def start_research() -> None:

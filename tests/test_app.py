@@ -70,3 +70,21 @@ def test_own_business_field_shown(no_code):
     field = next(t for t in at.text_input if t.label == c.OWN_BUSINESS_LABEL)
     assert field.placeholder == c.OWN_BUSINESS_PLACEHOLDER
     assert "not listed as one" in field.placeholder
+
+
+def test_new_research_clears_the_form(no_code):
+    at = app()
+    next(b for b in at.button if b.label == c.SAMPLE_BUTTON).click()
+    at.run()
+    at.text_input(key="f_own").input("Sri Example Silks")
+    at.text_input(key="f_competitors").input("Ragi Box")
+    at.run()
+    assert at.text_input(key="f_idea").value == "Healthy millet meal boxes"
+    next(b for b in at.button if b.label == c.NEW_BUTTON).click()
+    at.run()
+    assert not at.exception
+    for key in ("f_idea", "f_city", "f_target", "f_competitors", "f_own"):
+        assert at.text_input(key=key).value == "", key
+    assert at.text_input(key="f_country").value == "India"
+    assert at.text_input(key="f_currency").value == "Rs"
+    assert not any(b.label == c.NEW_BUTTON for b in at.button)  # report closed, empty form shown
