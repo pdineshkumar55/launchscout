@@ -297,14 +297,41 @@ def apply_relevance(ctx: RunContext, data: dict, idea: str, target: str, final_a
     return []
 
 
+# Words that say what kind of shop it is, or are honorifics, rather than which shop it is.
+_HONORIFIC = {"sri", "shri", "shree", "sree", "new", "the", "m/s", "ms"}
+_CATEGORY = {"silk", "silks", "saree", "sarees", "textile", "textiles", "store", "stores", "shop", "shops",
+             "boutique", "showroom", "mart", "emporium", "collection", "collections", "readymade",
+             "readymades", "fashion", "fashions", "trader", "traders", "enterprise", "enterprises",
+             "centre", "center", "cafe", "restaurant", "kitchen", "foods", "food", "and", "&"} | _LEGAL
+
+
+def _stem(word: str) -> str:
+    return word[:-1] if len(word) > 3 and word.endswith("s") else word
+
+
+def _loose_match(title: str, own: str) -> bool:
+    """Every distinctive word of the own name is in the title, and (when the own name has category words
+    such as "Silks") at least one of them is too. "Sri Example Silks" ~ "Example Silk Sarees", but not
+    "Example Bakery"."""
+    t_words = {_stem(w) for w in re.findall(r"[a-z0-9]+", title.lower())}
+    o_words = [w for w in re.findall(r"[a-z0-9]+", own.lower()) if w not in _HONORIFIC]
+    distinctive = [_stem(w) for w in o_words if w not in _CATEGORY and len(w) > 1]
+    category = {_stem(w) for w in o_words if w in _CATEGORY and w not in _LEGAL and w not in ("and", "&")}
+    if not distinctive or not all(w in t_words for w in distinctive):
+        return False
+    return not category or bool(category & t_words)
+
+
 def is_own_business(name: str, own_business: str) -> bool:
-    """True if a competitor name is the requester's own business ("Sri Example Silks" ~ "Example Silks")."""
+    """True if a competitor name is the requester's own business ("Sri Example Silks" ~ "Example Silks",
+    "Sri Example Silk Sarees")."""
     if not own_business.strip():
         return False
     a, b = _compact(name), _compact(own_business)
     if a == b or (min(len(a), len(b)) >= 5 and (a in b or b in a)):
         return True
-    return strict_name_match(own_business, name) or strict_name_match(name, own_business)
+    return (strict_name_match(own_business, name) or strict_name_match(name, own_business)
+            or _loose_match(name, own_business))
 
 
 def fill_from_listings(ctx: RunContext, data: dict, city: str, own_business: str = "", needed: int = 3) -> list[str]:
@@ -345,6 +372,15 @@ def fill_from_listings(ctx: RunContext, data: dict, city: str, own_business: str
     return added
 
 
+def own_removed_note(removed: list[str], city: str) -> str:
+    """Retry hint when the requester's own business was taken out and the list fell short."""
+    where = city or "the city"
+    return (f" {', '.join(removed)} is the requester's own business and was removed; it does not count "
+            "towards the 3 competitors. Run new searches with different words to find other businesses, "
+            f'for example "<core keyword> shops near {where}", "<core keyword> showroom {where}" or the '
+            "JustDial category page for this kind of business.")
+
+
 def market_scan_guardrail(ctx: RunContext, idea: str = "", target: str = "", own_business: str = "",
                           city: str = "") -> Callable:
     attempts = {"n": 0}
@@ -356,6 +392,7 @@ def market_scan_guardrail(ctx: RunContext, idea: str = "", target: str = "", own
             draft = _parse(output, MarketScanDraft)
         except (ValidationError, ValueError) as exc:
             return False, f"Output was not valid JSON for the required format: {exc}"
+        own: list[str] = []
         if own_business:
             own = [c.name for c in draft.competitors if is_own_business(c.name, own_business)]
             if own:
@@ -385,6 +422,7 @@ def market_scan_guardrail(ctx: RunContext, idea: str = "", target: str = "", own
                     "neighbouring towns or the district's main city, or online sellers that deliver here, "
                     'and set their location_type to "Online/regional".'
                     + (" Keep the requester's own business out of the list." if own_business else "")
+                    + (own_removed_note(own, city) if own else "")
                 )
             if city and len(data["competitors"]) < 3:
                 added = fill_from_listings(ctx, data, city, own_business)
@@ -430,10 +468,12 @@ def feedback_guardrail(ctx: RunContext) -> Callable:
         market_sources = ctx.results.get("market", {}).get("sources", [])
         known = market_sources + [{"id": e["id"], "title": e["title"], "url": e["url"]}
                                   for e in ctx.results.get("evidence", [])]
+        # Ids used by the own-business scan are taken too: new sources must not reuse them.
+        reserved = [s["id"] for s in (ctx.results.get("own") or {}).get("sources", [])]
         url_by_id: dict[int, str] = {s["id"]: s["url"] for s in known}
         title_by_id: dict[int, str] = {s["id"]: s["title"] for s in known}
         by_url = {normalize_url(s["url"]): s["id"] for s in known}
-        next_id = max([s["id"] for s in known] or [0]) + 1
+        next_id = max([s["id"] for s in known] + reserved or [0]) + 1
         remap: dict[int, int] = {}
         for s in draft.sources:
             key = normalize_url(s.url)

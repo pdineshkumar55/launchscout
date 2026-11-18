@@ -15,7 +15,18 @@ STAGE_NAMES = {
     2: "Customer feedback",
     3: "Gap & positioning",
     4: "Report",
+    5: "Your business scan",  # shown only when the requester names their own business
 }
+OWN_STAGE = 5
+
+
+def stage_order(has_own: bool) -> list[int]:
+    """Display and run order of the stages: the own-business scan runs between stages 1 and 2."""
+    return [1, OWN_STAGE, 2, 3, 4] if has_own else [1, 2, 3, 4]
+
+
+def stage_label(stage: int) -> str:
+    return STAGE_NAMES[stage] if stage == OWN_STAGE else f"Stage {stage} · {STAGE_NAMES[stage]}"
 
 
 @dataclass
@@ -46,7 +57,7 @@ def tool_event(stage: int, kind: str, detail: str) -> ProgressEvent:
 
 
 def stage_start(stage: int) -> ProgressEvent:
-    return ProgressEvent(stage, "stage_start", f"Stage {stage} · {STAGE_NAMES[stage]} started")
+    return ProgressEvent(stage, "stage_start", f"{stage_label(stage)} started")
 
 
 def stage_done(stage: int, data: dict | None) -> ProgressEvent:
@@ -58,8 +69,15 @@ def stage_done(stage: int, data: dict | None) -> ProgressEvent:
         items = data.get("items", [])
         with_reviews = sum(1 for i in items if i.get("source_ids"))
         fact = f"reviews found for {with_reviews} of {len(items)} competitors"
+    elif stage == OWN_STAGE:
+        if not data.get("found"):
+            fact = "no public listing found"
+        elif data.get("rating") is not None:
+            fact = f"rated {data['rating']}" + (f" from {data['reviews']} reviews" if data.get("reviews") else "")
+        else:
+            fact = "listing found, no rating"
     elif stage == 3:
         fact = "gap identified" if data.get("market_gap") else "comparison done"
     else:
         fact = "report ready"
-    return ProgressEvent(stage, "stage_done", f"Stage {stage} complete: {fact}")
+    return ProgressEvent(stage, "stage_done", (f"{STAGE_NAMES[stage]} complete: {fact}" if stage == OWN_STAGE else f"Stage {stage} complete: {fact}"))

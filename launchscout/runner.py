@@ -17,7 +17,7 @@ from pathlib import Path
 
 from .config import settings
 from .crew import build_crew
-from .events import ProgressEvent, stage_done, stage_start, tool_event
+from .events import OWN_STAGE, ProgressEvent, stage_done, stage_order, stage_start, tool_event
 from .models import ResearchInputs
 from .pipeline import FinalReport, finalize, new_run_dir, save_run
 from .tools import RunContext
@@ -35,8 +35,7 @@ class ResearchRun:
     run_id: str = field(default_factory=lambda: uuid.uuid4().hex[:10])
     status: str = RUNNING
     stage: int = 1                       # stage currently running
-    stage_state: dict[int, str] = field(default_factory=lambda: {1: "running", 2: "waiting",
-                                                                 3: "waiting", 4: "waiting"})
+    stage_state: dict[int, str] = field(default_factory=dict)  # stage -> waiting|running|done
     events: list[ProgressEvent] = field(default_factory=list)
     final: FinalReport | None = None
     error_kind: str = ""                 # "timeout" | "error" | "search" (UI picks the neutral message)
@@ -48,6 +47,11 @@ class ResearchRun:
     _ctx: RunContext | None = field(default=None, repr=False)
     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
     _thread: threading.Thread | None = field(default=None, repr=False)
+
+    def __post_init__(self) -> None:
+        self.order = stage_order(bool(self.inp.own_business))
+        if not self.stage_state:
+            self.stage_state = {s: ("running" if i == 0 else "waiting") for i, s in enumerate(self.order)}
 
     # ------------------------------------------------------------------ public (UI thread)
 
@@ -93,12 +97,19 @@ class ResearchRun:
                 return
             self.stage_state[stage] = "done"
             self._push(stage_done(stage, data))
-            if stage < 4:
-                self.stage = stage + 1
-                self.stage_state[stage + 1] = "running"
-                self._push(stage_start(stage + 1))
+            idx = self.order.index(stage)
+            if idx + 1 < len(self.order):
+                nxt = self.order[idx + 1]
+                self.stage = nxt
+                self.stage_state[nxt] = "running"
+                self._push(stage_start(nxt))
 
     def _on_tool(self, kind: str, detail: str) -> None:
+        if kind == "own_start":
+            return  # the stage card is already running (started when Stage 1 finished)
+        if kind == "own_done":
+            self._mark_done(OWN_STAGE, self._ctx.results.get("own") if self._ctx else None)
+            return
         self._push(tool_event(self.stage, kind, detail))
 
     def _work(self) -> None:
@@ -151,7 +162,7 @@ class ResearchRun:
         raw = self._raw(ctx, strategy=_pyd(built.strategy), writer=writer)
         save_run(self.run_dir, raw, ctx.seen_text)
         final = finalize(self.inp, raw["market"], raw["feedback"], raw["strategy"], writer,
-                         ctx.seen_text, self.run_dir)
+                         ctx.seen_text, self.run_dir, own=raw["own"])
         with self._lock:
             if self.status == RUNNING:
                 self.final = final
@@ -171,7 +182,7 @@ class ResearchRun:
                 raw = self._raw(ctx, strategy=None, writer=None)
                 save_run(self.run_dir, raw, ctx.seen_text)
                 self.final = finalize(self.inp, raw["market"], raw["feedback"], None, None,
-                                      ctx.seen_text, self.run_dir, check_links=False)
+                                      ctx.seen_text, self.run_dir, check_links=False, own=raw["own"])
                 self.status = PARTIAL
                 self._push(ProgressEvent(0, "error", "Run stopped early. Partial report saved."))
                 return "partial"
@@ -195,6 +206,7 @@ class ResearchRun:
             "strategy": strategy,
             "report_markdown": writer,
             "evidence": ctx.results.get("evidence", []),
+            "own": ctx.results.get("own"),
             "searches": ctx.searches,
             "fetches": ctx.fetches,
             "seen_urls": sorted(ctx.seen_urls),

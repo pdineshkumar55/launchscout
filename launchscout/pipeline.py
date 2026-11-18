@@ -33,10 +33,10 @@ class FinalReport:
 
 def finalize(inp: ResearchInputs, market: dict, feedback: dict | None, strategy: dict | None,
              writer_markdown: str | None, seen_text: dict[str, str], run_dir: Path,
-             check_links: bool = True) -> FinalReport:
+             check_links: bool = True, own: dict | None = None) -> FinalReport:
     prices = grade_prices(market, seen_text)
     price_ok = {name: p["status"] != "unverified" for name, p in prices.items()}
-    markdown, notes = assemble(inp, market, feedback, strategy, writer_markdown, price_ok)
+    markdown, notes = assemble(inp, market, feedback, strategy, writer_markdown, price_ok, own=own)
     markdown, cleaning = sanitize(markdown)
     checks = run_checks(markdown, market, prices, check_links=check_links)
     checks["sanitizer"] = cleaning
@@ -68,7 +68,7 @@ def refinalize(run_dir: Path, check_links: bool = True) -> FinalReport:
     seen = json.loads(seen_path.read_text(encoding="utf-8")) if seen_path.exists() else {}
     inp = ResearchInputs(**raw["inputs"])
     return finalize(inp, raw["market"], raw.get("feedback"), raw.get("strategy"),
-                    raw.get("report_markdown"), seen, run_dir, check_links=check_links)
+                    raw.get("report_markdown"), seen, run_dir, check_links=check_links, own=raw.get("own"))
 
 
 def new_run_dir(inp: ResearchInputs) -> Path:
@@ -91,6 +91,7 @@ class SavedRun:
     markdown: str
     market: dict
     sources: list[dict]
+    own: dict | None = None  # the requester's own business scan; None for older runs or when not asked
 
     @property
     def label(self) -> str:
@@ -106,8 +107,11 @@ def load_run(run_dir: Path) -> SavedRun | None:
         return None
     market = raw.get("market") or {}
     sources = list(market.get("sources", [])) + list((raw.get("feedback") or {}).get("sources", []))
+    own = raw.get("own") if isinstance(raw.get("own"), dict) else None
+    if own:
+        sources += list(own.get("sources", []))
     created = datetime.fromtimestamp((run_dir / "report.md").stat().st_mtime)
-    return SavedRun(run_dir, raw.get("inputs", {}), created, markdown, market, sources)
+    return SavedRun(run_dir, raw.get("inputs", {}), created, markdown, market, sources, own)
 
 
 def list_runs(root: Path | None = None, limit: int = 30) -> list[SavedRun]:

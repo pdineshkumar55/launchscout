@@ -51,13 +51,14 @@ def run_research(inp: ResearchInputs, on_event: Callable[[str, str], None] | Non
         "strategy": strategy_out.pydantic.model_dump(mode="json") if strategy_out and strategy_out.pydantic else None,
         "report_markdown": built.report.output.raw if built.report.output else None,
         "evidence": ctx.results.get("evidence", []),
+        "own": ctx.results.get("own"),
         "searches": ctx.searches,
         "fetches": ctx.fetches,
         "seen_urls": sorted(ctx.seen_urls),
     }
     save_run(run_dir, raw, ctx.seen_text)
     final = finalize(inp, raw["market"], raw["feedback"], raw["strategy"], raw["report_markdown"],
-                     ctx.seen_text, run_dir, check_links=check_links)
+                     ctx.seen_text, run_dir, check_links=check_links, own=raw["own"])
 
     usage = result.token_usage
     return RunResult(

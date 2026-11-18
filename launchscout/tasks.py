@@ -42,9 +42,20 @@ def _inputs_block(inp: ResearchInputs) -> str:
     )
 
 
+def plan_heading(inp: ResearchInputs) -> str:
+    """An existing business gets a growth plan rather than a launch plan."""
+    return "30-Day Growth Plan" if inp.own_business else "30-Day Launch Plan"
+
+
 def market_scan_task(agent: Agent, inp: ResearchInputs, ctx: RunContext) -> Task:
     known = inp.competitor_list
     known_queries = "".join(f'\n  - "{c} price" and "{c} {inp.city}"' for c in known)
+    # Only when the requester named their own business: it takes one of the few local slots, so ask for
+    # other businesses explicitly and widen the search. Empty otherwise (prompt unchanged).
+    own_queries = (f'\n  - "<core keyword> shops near {inp.city}" and "best <core keyword> {inp.city}", to find '
+                   "businesses beyond the first few listings" if inp.own_business else "")
+    own_rule = (f"\n- {inp.own_business} is the requester's own business. It does not count towards the 3 to 5: "
+                "find 3 to 5 other businesses." if inp.own_business else "")
     return Task(
         description=f"""{_inputs_block(inp)}
 
@@ -55,7 +66,7 @@ Search plan (adapt the keywords; run several searches):
   - "<core keyword> delivery {inp.city}" and "<core keyword> subscription {inp.city}"
   - "<core keyword> {inp.city} price" or "price list" or "packages" or "plans"
   - listings on JustDial, Google Maps, and the apps where this kind of business sells (e.g. Swiggy or Zomato
-    for food, Urban Company for home services, Practo for clinics), Instagram or Facebook pages, own websites{known_queries}
+    for food, Urban Company for home services, Practo for clinics), Instagram or Facebook pages, own websites{known_queries}{own_queries}
 Open the most useful pages (own website, pricing or packages page, app listing) to read prices.
 
 Rules:
@@ -69,7 +80,7 @@ Rules:
 - Prefer competitors in {inp.city}. If fewer than 3 local ones exist, add the nearest regional or online
   players and set location_type to "Online/regional"; otherwise "Local".
 - Only list a business whose name appears in a search result or page you read.
-- If the input names the requester's own business, never list it as a competitor.
+- If the input names the requester's own business, never list it as a competitor.{own_rule}
 - Every competitor needs at least one source: a URL that appeared in your search results or that you read.
 - price: the price exactly as found, with currency and unit, e.g. "{inp.currency} 180 per meal".
   If no price is public, write "Not listed" and say why in offers (e.g. "Prices only on WhatsApp").
@@ -133,7 +144,27 @@ Rules:
     )
 
 
+OWN_STRATEGY_RULES = """
+The requester already runs the business named in the <own_business> data at the end of these instructions.
+- Steps 2-4 must account for its current position (rating, prices, channels, what customers say).
+5. you_ahead: 2-4 points where it is ahead of the competitors, each comparing a specific figure or fact with
+   a named competitor.
+6. competitors_ahead: 2-4 points where a competitor is ahead, each naming that competitor.
+7. actions: 3-5 concrete actions (what to fix, what to lean on), each tied to a fact above. Example: if its
+   rating or review count is lower, include a review push.
+- Every point in 5-7 ends with the [n] source ids of the facts it uses, taken from the market scan, the
+  customer feedback or the own_business data. Never invent ratings, prices or reviews.
+- If no public information was found for it, leave you_ahead and competitors_ahead empty and base the
+  actions on getting listed and reviewed.
+"""
+
+
 def strategy_task(agent: Agent, inp: ResearchInputs, market: Task, feedback: Task) -> Task:
+    own_rules = OWN_STRATEGY_RULES if inp.own_business else ""
+    own_output = ("""
+- "you_ahead": list of strings, each with [n] citations.
+- "competitors_ahead": list of strings, each naming a competitor, with [n] citations.
+- "actions": list of 3-5 strings, each with [n] citations.""" if inp.own_business else "")
     return Task(
         description=f"""{_inputs_block(inp)}
 
@@ -147,7 +178,7 @@ Using only the market scan and customer feedback from the previous steps:
 3. Recommend a positioning: a one-line offer that includes the price in {inp.currency}.
 4. Recommend a launch price and justify it against the competitor prices found (name competitors and their
    prices; say whether the price sits below, at or above them and why).
-
+{own_rules}
 {STYLE_RULES}""",
         expected_output=f"""A JSON object with exactly these keys:
 - "matrix_notes": 3-5 sentences comparing the competitors.
@@ -155,7 +186,7 @@ Using only the market scan and customer feedback from the previous steps:
 - "positioning_line": one-line offer including the price, e.g. "Fresh millet lunch boxes delivered by 1 pm,
   {inp.currency} 160 per meal".
 - "recommended_price": e.g. "{inp.currency} 160 per meal".
-- "price_rationale": 2-3 sentences comparing with named competitor prices.""",
+- "price_rationale": 2-3 sentences comparing with named competitor prices.{own_output}""",
         agent=agent,
         context=[market, feedback],
         output_pydantic=Strategy,
@@ -196,7 +227,7 @@ One short paragraph.
 
 Why this price: ...
 
-## 5. 30-Day Launch Plan
+## 5. {plan_heading(inp)}
 - Week 1: ...
 - Week 2: ...
 - Week 3: ...
@@ -210,6 +241,9 @@ Why this price: ...
 def report_task(agent: Agent, inp: ResearchInputs, run_dir: Path,
                 market: Task, feedback: Task, strategy: Task) -> Task:
     today = date.today().strftime("%d %b %Y")
+    own_plan = ("\n  The requester already runs the business in the <own_business> data: this is a growth plan for "
+                "it, not a launch plan. Build on its strengths and fix its gaps against the competitors (for "
+                "example a review push if its rating or review count is lower)." if inp.own_business else "")
     return Task(
         description=f"""{_inputs_block(inp)}
 
@@ -225,7 +259,7 @@ Rules:
 - Section 3: one short paragraph.
 - Section 4: the positioning line as a quote, then "Why this price:" with the rationale.
 - Section 5: four bullets, one per week, each with concrete actions for {inp.city} (channels, partners,
-  pricing tests, targets). Realistic for a small founder budget.
+  pricing tests, targets). Realistic for a small founder budget.{own_plan}
 - Do not add any other sections, notes or closing remarks.
 
 When the report is complete, save it with the file writer as filename "report_draft.md" (overwrite true),
@@ -238,7 +272,7 @@ Skeleton:
         expected_output=(
             "The complete Markdown report, starting with '# Competitor Report:' and containing exactly these "
             "headings in order: '## 1. Key Competitors', '## 2. What Customers Complain About', "
-            "'## 3. Market Gap', '## 4. Recommended Positioning', '## 5. 30-Day Launch Plan', '## Sources'. "
+            f"'## 3. Market Gap', '## 4. Recommended Positioning', '## 5. {plan_heading(inp)}', '## Sources'. "
             "Inline [n] citations that all appear in Sources."
         ),
         agent=agent,

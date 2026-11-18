@@ -69,4 +69,4 @@ def test_own_business_field_shown(no_code):
     at = app()
     field = next(t for t in at.text_input if t.label == c.OWN_BUSINESS_LABEL)
     assert field.placeholder == c.OWN_BUSINESS_PLACEHOLDER
-    assert "left out of the competitor list" in field.placeholder
+    assert "not listed as one" in field.placeholder
